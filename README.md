@@ -17,7 +17,7 @@ flowchart TD
     F --> G[qase_import.csv]
     G --> H[Импорт в Qase]
 
-🔧 Требования
+Требования
 1. MacOS / Linux / Windows
 2. Python 3.10+
 3. PyCharm (или любой IDE)
