@@ -6,6 +6,7 @@ Qase AI Test Case Generator (Hybrid Mode)
 3.  Фвтоматически конвертирует их в CSV для импорта в Qase
 
 ⚠️ Не требует API ключа — работает в гибридном режиме (через ChatGPT вручную)
+
 ```mermaid
 flowchart TD
     A[Документация<br/>data/input] --> B[python -m app.main]
