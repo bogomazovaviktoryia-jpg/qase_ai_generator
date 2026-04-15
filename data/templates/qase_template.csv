@@ -1,0 +1,5 @@
+v2.id,title,description,preconditions,postconditions,tags,priority,severity,type,behavior,automation,status,is_flaky,layer,steps_type,steps_actions,steps_result,steps_data,milestone_id,milestone,suite_id,suite_parent_id,suite,suite_without_cases,parameters,is_muted,cf_8,cf_9,cf_10,cf_27,cf_36
+,,,,,,,,,,,,,,,,,,,,1057,1055,"[4521/4522/4523] test",1
+15711,"[4521] Обновление пакета test.sdk до v. 1.19.2",,,,,high,normal,other,undefined,is-not-automated,actual,no,unknown,classic,,,,,,1057,1055,"[4521/4522/4523] test",,,no,,,,,
+15712,"[4522] Обновление пакета test.advertising до v. 1.4.33",,,,,high,normal,other,undefined,is-not-automated,actual,no,unknown,classic,,,,,,1057,1055,"[4521/4522/4523] test",,,no,,,,,
+15713,"[4523] Обновление пакета test до v. 1.0.3",,,,,high,normal,other,undefined,is-not-automated,actual,no,unknown,classic,,,,,,1057,1055,"[4521/4522/4523] test",,,no,,,,,
