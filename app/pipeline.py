@@ -6,13 +6,15 @@ from pathlib import Path
 from app.config import (
     INPUT_DIR,
     OUTPUT_DIR,
-    TEMPLATE_DIR,
+    TEMPLATES_DIR,
     SUPPORTED_EXTENSIONS,
     MAX_DOCUMENT_CHARS,
     CHUNK_SIZE,
     CHUNK_OVERLAP,
     OPENAI_MODE,
+    PROMPT_PROFILE,
 )
+
 from app.utils import clean_text, chunk_text, ensure_dir, normalize_title
 from app.readers.text_reader import read_txt
 from app.readers.pdf_reader import read_pdf
@@ -86,7 +88,14 @@ def run_manual_prepare(documents_text: str) -> None:
     prompt_path = OUTPUT_DIR / "prompt_for_chatgpt.txt"
     preview_path = OUTPUT_DIR / "source_preview.txt"
 
-    save_manual_prompt(documents_text, prompt_path)
+    print(f"Prompt profile: {PROMPT_PROFILE}")
+
+    save_manual_prompt(
+        documents_text=documents_text,
+        output_path=prompt_path,
+        profile=PROMPT_PROFILE,
+    )
+
     preview_path.write_text(documents_text, encoding="utf-8")
 
     print("\nManual mode enabled.")
@@ -95,9 +104,8 @@ def run_manual_prepare(documents_text: str) -> None:
     print("\nNext steps:")
     print("1. Open prompt_for_chatgpt.txt")
     print("2. Copy all text into ChatGPT")
-    print("3. Save model response as data/output/manual_response.json")
-    print("4. Run: python -m app.main")
-
+    print("3. Copy ChatGPT response")
+    print("4. Run: python -m app.main save-response")
 
 def run_manual_finalize() -> None:
     manual_json_path = OUTPUT_DIR / "manual_response.json"
@@ -113,7 +121,7 @@ def run_manual_finalize() -> None:
 
     json_path = OUTPUT_DIR / "generated_cases.json"
     csv_path = OUTPUT_DIR / "qase_import.csv"
-    template_csv = TEMPLATE_DIR / "qase_template.csv"
+    template_csv = TEMPLATES_DIR / "qase_template.csv"
 
     json_path.write_text(
         json.dumps(
