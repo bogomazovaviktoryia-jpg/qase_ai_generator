@@ -57,21 +57,24 @@ def save_response_and_generate_csv():
         )
 
         text = result.stdout.strip()
+
         if not text:
             raise ValueError("Clipboard is empty. Copy ChatGPT JSON response first.")
 
         response_path = OUTPUT_DIR / "manual_response.json"
         response_path.write_text(text, encoding="utf-8")
 
-        run_pipeline()
+        from app.pipeline import run_manual_finalize
+
+        run_manual_finalize()
 
         messagebox.showinfo(
             "Done",
             "CSV generated:\ndata/output/qase_import.csv",
         )
+
     except Exception as e:
         messagebox.showerror("Error", str(e))
-
 
 def clean_output():
     ensure_dirs()
